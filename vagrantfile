@@ -1,0 +1,35 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure("2") do |config|
+   # Serveur registry 6
+  #config.disksize.size = '90GB'
+  config.vm.define "minikube" do |devops|
+    devops.vm.box = "bento/ubuntu-20.04"
+    devops.vm.hostname = "minikube"
+    devops.vm.box_url = "bento/ubuntu-20.04"
+    devops.vm.network :private_network, ip: "192.168.33.54"
+    devops.vm.provider :virtualbox do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+      v.customize ["modifyvm", :id, "--memory", 5048]
+      v.customize ["modifyvm", :id, "--name", "minikube"]
+      v.customize ["modifyvm", :id, "--cpus", "8"]
+    end
+    #config.vm.provision "ansible_local" do |ansible|
+    #    ansible.playbook = "./provisioning/playbook.yml"
+    #end
+    config.vm.provision "shell", path: "provisioning/minikube.sh"
+    config.vm.provision "shell", inline: <<-SHELL
+      sed -i 's/ChallengeResponseAuthentication no/ChallengeResponseAuthentication yes/g' /etc/ssh/sshd_config
+      sudo systemctl  restart sshd.service
+    SHELL
+    
+  end
+
+end
+#sudo usermod -aG docker $USER && newgrp docker
