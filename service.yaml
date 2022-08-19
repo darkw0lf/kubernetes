@@ -1,14 +1,19 @@
-kind: Service
-apiVersion: v1
+apiVersion: apps/v1
+kind: ReplicaSet
 metadata:
+  name: nginx-rs
   labels:
-    k8s-app: kubernetes-dashboard
-  name: kubernetes-dashboard
-  namespace: kubernetes-dashboard
+    app: web
 spec:
-  ports:
-    - port: 443
-      targetPort: 8443
+  replicas: 3
   selector:
-    k8s-app: kubernetes-dashboard
-  type: NodePort
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
