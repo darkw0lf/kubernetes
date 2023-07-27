@@ -9,4 +9,4 @@ spec:
   - name: vote
     image: instavote/vote
     ports:
-    - containersPort: 80
+    - containerPort: 80
