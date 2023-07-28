@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Ingress
+metadata:
+  name: www-domain
+spec:
+  rules:
+  - host: domain.lan
+    http:
+      paths:
+      - backend:
+          serviceName: www
+          servicePort: 80
