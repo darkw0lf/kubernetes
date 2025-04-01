@@ -29,8 +29,8 @@ containerd config default | sudo tee /etc/containerd/config.toml
 
 sudo sed -i 's/SystemdCgroup = false/SystemdCgroup = true/' /etc/containerd/config.toml
 
-systemctl restart containerd
-systemctl enable containerd
+sudo systemctl restart containerd
+sudo systemctl enable containerd
 
 K8S_VERSION="1.32"
 sudo mkdir -p -m 755 /etc/apt/keyrings
