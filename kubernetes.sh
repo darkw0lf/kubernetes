@@ -69,7 +69,7 @@ kubectl get pods -A -o wide
 kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 kubectl get pods -n kube-system -o wide
 
-sudo kubeadm token create --print-join-command
+#sudo kubeadm token create --print-join-command
 
 kubectl get nodes -o wide
 kubectl run my-pod --image=nginx --port=80
