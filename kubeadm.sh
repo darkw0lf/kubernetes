@@ -5,6 +5,7 @@ sudo apt update -y && sudo apt upgrade -y
 sudo apt install -y curl apt-transport-https ca-certificates software-properties-common
 
 sudo swapoff -a
+#Supprimer la ligne du SWAP dans /etc/fstab
 
 sudo modprobe overlay
 sudo modprobe br_netfilter
