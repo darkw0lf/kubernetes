@@ -5,7 +5,6 @@ sudo apt update -y && sudo apt upgrade -y
 sudo apt install -y curl apt-transport-https ca-certificates software-properties-common
 
 sudo swapoff -a
-sudo sed -i '/ swap / s/^/#/' /etc/fstab
 
 sudo modprobe overlay
 sudo modprobe br_netfilter
