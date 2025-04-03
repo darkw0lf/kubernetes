@@ -56,6 +56,7 @@ source ~/.bashrc
 sudo systemctl start kubelet
 sudo systemctl enable kubelet
 
+# Mettre l'ip du serveur
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.1.21
 
 mkdir -p $HOME/.kube
