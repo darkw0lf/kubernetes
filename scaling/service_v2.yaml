@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: web-servers
+  name: web-servers
+  namespace: default
+spec:
+  ports:
+  - name: web-servers-port
+    port: 80
+  selector:
+    app: web-servers
+  sessionAffinity: None
+  type: NodePort
