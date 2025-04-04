@@ -7,15 +7,15 @@ spec:
   - name: proxy
     image: nginx:1.12.2
     ports:
-    - containersPort: 8000
+    - containerPort: 8000
     volumeMounts:
     - name: config
-      mountPath: "/etC/nginx/"
+      mountPath: "/etc/nginx/"
   - name: api
     image: lucj/city:1.0
     ports:
     - containerPort: 80
   volumes:
   - name: config
-  configMap:
-    name: nginx-config
+    configMap:
+      name: nginx-config
