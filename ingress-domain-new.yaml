@@ -4,10 +4,13 @@ metadata:
   name: www-domain
 spec:
   rules:
-  - host: www.example.com
-      paths:
-        backend:
-          service:
-            name: www
-          port:
-            number: 80
+    - host: www.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: www
+                port:
+                  number: 80
