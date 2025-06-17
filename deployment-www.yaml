@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wwww
+  name: www
 spec:
   selector:
     matchLabels:
-      app: wwww
+      app: www
   replicas: 2
   template:
     metadata:
